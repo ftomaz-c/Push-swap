@@ -52,8 +52,8 @@ Advanced Algorithms:
 - Radix Sort
 
 ### Table of Complexity Comparison:
-| Name	| Best Case	| Average Case	| Worst Case	| Memory Stable	| Method Used	|
-|---	|---		|---			|---			|---			|---			|
-|Bubble Sort|
+| Name	| Space Complexity| Best Case	| Average Case	| Worst Case	| Memory Stable	| Method Used	|
+|---	|---	|---		|---			|---			|---			|---			|
+|Bubble Sort| O(1)| O(n)| O(n^2)| O(n^2)|
 
 [geeksforgeeks - Sorting Algorithms](https://www.geeksforgeeks.org/sorting-algorithms/)
