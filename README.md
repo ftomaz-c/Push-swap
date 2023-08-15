@@ -55,5 +55,7 @@ Advanced Algorithms:
 | Name	| Space Complexity| Best Case	| Average Case	| Worst Case	| Memory Stable	| Method Used	|
 |---	|---	|---		|---			|---			|---			|---			|
 |Bubble Sort| O(1)| O(n)| O(n^2)| O(n^2)|
+|Selection Sort|
+|Quick Sort| O(log n) | O(n log n) | O(n^2) | O(n log n) |
 
 [geeksforgeeks - Sorting Algorithms](https://www.geeksforgeeks.org/sorting-algorithms/)
