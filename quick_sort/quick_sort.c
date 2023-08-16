@@ -6,36 +6,36 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:58:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/08/15 20:23:55 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/08/16 10:13:20 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../libft.h"
 
-int	partition(int arr[], int lo, int hi);
+int		partition(int arr[], int lo, int hi);
 void	quick_sort(int *arr, int lo, int hi);
 
 int main() {
-	int arr[] = {45, 23, 78, 12, 56, 89, 34, 67, 90, 32};
+	int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	int len = sizeof(arr) / sizeof(arr[0]);
 
-	printf("Original array: ");
+	ft_printf("Original array: ");
 	int i = 0;
 	while (i < len) {
-		printf("%d ", arr[i]);
+		ft_printf("%d ", arr[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 
 	quick_sort(arr, 0, len - 1);
 
-	printf("Sorted array: ");
+	ft_printf("Sorted array: ");
 	i = 0;
 	while (i < len) {
-		printf("%d ", arr[i]);
+		ft_printf("%d ", arr[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 
 	return 0;
 }
@@ -51,7 +51,7 @@ void	quick_sort(int *arr, int lo, int hi) {
 	quick_sort(arr, pivot_idx + 1, hi);
 }
 
-/* int	partition(int *arr, int lo, int hi) {
+/* int	partition(int *arr, int lo, int hi) { //Lomuto partition technique
 
 	int	pivot = arr[hi];
 	int	idx = lo - 1;
@@ -90,11 +90,10 @@ int find_median(int arr[], int a, int b, int c) {
 	}
 }
 
-int partition(int arr[], int lo, int hi) {
+int partition(int arr[], int lo, int hi) { //median of three partition tecnique
 	int pivot_index = find_median(arr, lo, (lo + hi) / 2, hi);
 	int pivot = arr[pivot_index];
 
-	// Swap pivot with the last element
 	int tmp = arr[hi];
 	arr[hi] = arr[pivot_index];
 	arr[pivot_index] = tmp;

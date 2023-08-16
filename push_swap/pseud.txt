@@ -1,0 +1,24 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    pseud.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/16 13:28:35 by ftomaz-c          #+#    #+#              #
+#    Updated: 2023/08/16 13:43:21 by ftomaz-c         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+main.c
+	argv, can be passed as 2 arguments with the use of "";
+	arguments error handling
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	else if argc == 2 **split
+	stack init
+	push swap
+
+stack init
+	some arguments aren’t integers
+	some arguments are bigger than an integer
+	and/or there are duplicates.
