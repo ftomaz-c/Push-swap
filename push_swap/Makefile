@@ -1,32 +1,23 @@
 CC = cc
 
-LIB_CMD = ar -rcs
-#ar: create a static library archive:
-# -r - create the archive;
-# -c - update contents;
-# -s - make the archive file.
+NAME = push_swap
 
-NAME = push_swap.a
+CFLAGS = -Wall -Wextra -Werror -g
 
-CFLAGS = -Wall -Wextra -Werror
+SRC = main.c
 
-SRC =
-
-OBJ = $(SRC:.c=.o)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
-
-$(NAME):	$(OBJ)
-	$(LIB_CMD) $(NAME) $(OBJ)
+$(NAME):
+	$(MAKE) -C libft
+	$(CC) $(CFLAGS) $(SRC) libft/libft.a -o $(NAME)
 
 all:		$(NAME)
 
 clean:
-	rm -rf $(OBJ) $(BOBJ)
+	$(MAKE) -C libft clean
 
 fclean:	clean
 	rm -rf $(NAME)
+	$(MAKE) -C libft fclean
 
 re:	fclean all
 
