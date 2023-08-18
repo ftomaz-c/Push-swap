@@ -4,7 +4,7 @@ NAME = push_swap
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = main.c	error.c		stack_init.c
+SRC = main.c	error.c		stack_init.c	swap.c	push.c
 
 LIBFT = libft/libft.a
 
