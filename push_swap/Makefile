@@ -4,11 +4,14 @@ NAME = push_swap
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = main.c
+SRC = main.c	error.c		stack_init.c
+
+LIBFT = libft/libft.a
 
 $(NAME):
 	$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(SRC) libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) $(LIBFT) -o $(NAME)
+
 
 all:		$(NAME)
 

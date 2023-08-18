@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 12:08:30 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/08/18 17:37:26 by ftomaz-c         ###   ########.fr       */
+/*   Created: 2023/08/18 17:37:09 by ftomaz-c          #+#    #+#             */
+/*   Updated: 2023/08/18 17:37:59 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*Converts the initial portion of the string pointed to by nptr to int.		*/
-/*Returns the converted value												*/
-
-int	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
-	int	i;
-	int	sign;
-	int	result;
+	int		i;
+	int		sign;
+	long	result;
 
 	sign = 1;
 	i = 0;
