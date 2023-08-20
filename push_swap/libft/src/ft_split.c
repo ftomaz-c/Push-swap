@@ -5,87 +5,129 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 13:11:11 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/08/17 19:08:00 by ftomaz-c         ###   ########.fr       */
+/*   Created: 2023/08/20 19:03:23 by ftomaz-c          #+#    #+#             */
+/*   Updated: 2023/08/20 20:35:03 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*Allocates (with malloc(3)) and returns an array of strings obtained by	*/
-/* splitting ’s’ using the character ’c’ as a delimiter. The array must end	*/
-/* with a NULL pointer. Returns the array of new strings resulting from the	*/
-/* split or NULL if the allocation fails.									*/
-/*s: The string to be split.												*/
-/*c: The delimiter character.												*/
+#include <stdlib.h>
+#include <stdio.h>
 
-#include "libft.h"
+char	*ft_strchr(char *s, int c)
+{
+	int	i;
 
-size_t	count_words(char const *str, char c) {
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (s + i);
+		i++;
+	}
+	if (c == '\0')
+		return (s + i);
+	return (NULL);
+}
 
-	size_t	count;
-	int		word;
+int	count_words(char *str, char *charset)
+{
+	int	count;
+	int	in_word;
+	int	i;
 
 	count = 0;
-	word = 0;
-	while(*str) {
-		if (*str != c && word == 0) {
-			word = 1;
-			count++;
+	in_word = 0;
+	while (*str)
+	{
+		if (!ft_strchr(charset, *str))
+		{
+			if (!in_word)
+			{
+				in_word = 1;
+				count++;
+			}
 		}
-		else if (*str == c)
-			word = 0;
+		else
+			in_word = 0;
 		str++;
 	}
 	return (count);
 }
 
-void	free_stash(char **stash, int len) {
-
-	int	i;
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
 
 	i = 0;
-	while (i < len) {
-		free(stash[i]);
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
 		i++;
 	}
-}
-
-void	alloc_and_stash(char **stash, char const *str, int begin, int end, int index) {
-
-	size_t	i;
-
-	stash[index] = ft_calloc(sizeof(char), end - begin + 1);
-	if (!stash[index]) {
-		free_stash(stash, index);
-		return ;
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
 	}
-	i = 0;
-	while (begin < end)
-		stash[index][i++] = str[begin++];
-	stash[index][i] = '\0';
+	return (dest);
 }
 
-char	**ft_split(char const *str, char c) {
+int	word_lenght(int i, char *str, char *charset)
+{
+	int	word_len;
 
-	char	**stash;
-	size_t	index;
-	size_t	j;
-	size_t	i;
+	word_len = 0;
+	while (str[i + word_len] && !ft_strchr(charset, str[i + word_len]))
+		word_len++;
+	return (word_len);
+}
 
-	stash = ft_calloc(sizeof(char *), count_words(str, c) + 1);
-	if (!stash)
+char **ft_split(char *str, char *charset)
+{
+	int		i;
+	int		j;
+	int		word_len;
+	char	**split;
+
+	split = malloc(sizeof(char *) * (count_words(str, charset) + 1));
+	if (!split)
 		return NULL;
 	i = 0;
-	index = 1;
-	while(str[i] != '\0') {
-		if (str[i] != c) {
-			j = i;
-			while (str[i] != c && str[i] != '\0')
-				i++;
-			alloc_and_stash(stash, str, j, i, index);
-			index++;
-			}
+	j = 0;
+	while (str[i])
+	{
+		if (!ft_strchr(charset, str[i]))
+		{
+			word_len = word_lenght(i, str, charset);
+			split[j] = malloc(sizeof(char) * (word_len + 1));
+			ft_strncpy(split[j], str + i, word_len);
+			split[j++][word_len] = '\0';
+			i += word_len;
+		}
 		else
 			i++;
 	}
-	return (stash);
+	split[j] = NULL;
+	return (split);
 }
+
+/* int main()
+{
+	char	*str;
+	char	*charset;
+	char	**split;
+	int		i;
+
+	str = "Fábio Cesar Tomaz Castim";
+	charset = " ";
+	split = ft_split(str, charset);
+	i = 0;
+	while (split[i])
+	{
+		printf("%s\n", split[i]);
+		free(split[i]);
+		i++;
+	}
+	free(split);
+	return (0);
+} */
