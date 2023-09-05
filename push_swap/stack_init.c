@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:48:37 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/08/18 17:50:00 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:49:10 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	free_nodes(t_list *a)
 {
-	t_list	*head;
 	t_list	*current;
 	t_list	*temp;
 
-	head = a;
 	current = a->next;
 	while (current != a)
 	{
@@ -43,7 +41,7 @@ t_list	*create_node(int data, int index)
 	return (temp);
 }
 
-void	stack_init(t_list **head_a, char **argv, int argc)
+int	stack_init(t_list **head_a, char **argv, int argc)
 {
 	t_list	*temp;
 	t_list	*current;
@@ -54,7 +52,10 @@ void	stack_init(t_list **head_a, char **argv, int argc)
 	{
 		temp = create_node(ft_atoi(argv[index]), index);
 		if (!temp)
-			return ;
+		{
+			free_nodes(*head_a);
+			return (1);
+		}
 		if (*head_a == NULL)
 		{
 			*head_a = temp;
@@ -70,4 +71,5 @@ void	stack_init(t_list **head_a, char **argv, int argc)
 		}
 		index++;
 	}
+	return (0);
 }

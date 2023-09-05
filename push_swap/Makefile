@@ -1,19 +1,14 @@
 CC = cc
-
 NAME = push_swap
-
 CFLAGS = -Wall -Wextra -Werror -g
+SRC = main.c	error.c		stack_init.c	swap.c	push.c \
+INCLUDES = -I./libft/includes
 
-SRC = main.c	error.c		stack_init.c	swap.c	push.c
-
-LIBFT = libft/libft.a
+all:	$(NAME)
 
 $(NAME):
 	$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT) -o $(NAME)
-
-
-all:		$(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRC) libft/libft.a -o $(NAME)
 
 clean:
 	$(MAKE) -C libft clean

@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:40:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/08/19 18:03:24 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:49:09 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ int	counts_nodes(t_list *head)
 	int		count;
 	t_list	*current;
 
+	if (!head)
+		return (0);
 	current = head->next;
 	count = 0;
 	while (current != NULL)
 	{
 		count++;
 		current = current->next;
-		if (current->next == head)
+		if (current == head)
 			break ;
 	}
 	return (count);
@@ -36,12 +38,14 @@ int	main(int argc, char **argv)
 
 	if (error_arg_type(argc, argv))
 		return (ft_printf("Error\n"));
+
 	if (argc > 2)
 	{
 		head_a = NULL;
 		head_b = NULL;
 
-		stack_init(&head_a, argv, argc);
+		if (stack_init(&head_a, argv, argc))
+			return(ft_printf("Error\n"));
 
 		ft_printf("\nList A:\n");
 		t_list *current_a = head_a;
