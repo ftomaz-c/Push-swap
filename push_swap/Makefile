@@ -1,20 +1,30 @@
-CC = cc
 NAME = push_swap
+SRC = main.c error.c stack_init.c swap.c push.c
+OBJ = $(SRC:.c=.o)
+
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-SRC = main.c	error.c		stack_init.c	swap.c	push.c \
+
 INCLUDES = -I./libft/includes
+LIBFT = libft/libft.a
 
 all:	$(NAME)
 
-$(NAME):
+$(LIBFT):
 	$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRC) libft/libft.a -o $(NAME)
+
+$(OBJ): %.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME)
 
 clean:
 	$(MAKE) -C libft clean
+	rm -f $(OBJ)
 
 fclean:	clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 	$(MAKE) -C libft fclean
 
 re:	fclean all
