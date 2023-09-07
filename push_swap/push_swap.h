@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:18:08 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/05 16:47:49 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:38:42 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,17 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+/*error.c*/
 int		error_arg_type(int argc, char **argv);
+
+/*stack_init.c*/
 int		stack_init(t_list **head_a, char **argv, int argc);
-t_list	*create_node(int data, int index);
+
+/*push_swap_utils.c*/
+int		counts_nodes(t_list *head)
 void	free_nodes(t_list *a);
 
-void	swap(const char *str, ...);
-void	sa(t_list **head_a);
-void	sb(t_list **head_b);
-void	ss(t_list **head_a, t_list **head_b);
-
-void	pb(t_list **head_a, t_list **head_b);
+/*swap.c*/
+void	swap(const char *op, t_list **head_a, t_list **head_b);
 
 #endif

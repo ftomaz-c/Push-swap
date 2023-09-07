@@ -6,30 +6,11 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:40:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 14:43:45 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:38:57 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	counts_nodes(t_list *head)
-{
-	int		count;
-	t_list	*current;
-
-	if (!head)
-		return (0);
-	current = head;
-	count = 0;
-	while (current != NULL)
-	{
-		count++;
-		current = current->next;
-		if (current == head)
-			break ;
-	}
-	return (count);
-}
 
 int	main(int argc, char **argv)
 {

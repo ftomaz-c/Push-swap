@@ -6,28 +6,11 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:48:37 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 15:05:39 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:38:51 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_nodes(t_list *a)
-{
-	t_list	*current;
-	t_list	*temp;
-
-	if (!a)
-		return ;
-	current = a->next;
-	while (current != a)
-	{
-		temp = current;
-		current = current->next;
-		free(temp);
-	}
-	free(a);
-}
 
 t_list	*create_node(int data, int index)
 {
