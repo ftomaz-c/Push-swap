@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:18:08 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 16:36:03 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:42:26 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ void	swap(const char *op, t_list **head_a, t_list **head_b);
 
 /*push.c*/
 void	push(char *op, t_list **head_a, t_list **head_b);
+void	pa(t_list **head_a, t_list **head_b);
+void	pb(t_list **head_a, t_list **head_b);
+
+void	rotate(char *op, t_list **head_a, t_list **head_b);
 
 #endif

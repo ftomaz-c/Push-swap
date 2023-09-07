@@ -6,13 +6,13 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:48:37 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 16:27:33 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:02:37 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*create_node(int data, int index)
+t_list	*create_node(int data)
 {
 	t_list	*temp;
 
@@ -25,13 +25,12 @@ t_list	*create_node(int data, int index)
 	return (temp);
 }
 
-int	add_node_to_stack(t_list **head_a, int data, int index)
+int	add_node_to_stack(t_list **head_a, int data)
 {
 	t_list	*temp;
-	t_list	*current;
 	t_list	*last;
 
-	temp = create_node(data, index);
+	temp = create_node(data);
 	if (!temp)
 		return (1);
 	if (!*head_a)
@@ -56,7 +55,7 @@ int	stack_init(t_list **head_a, char **argv, int argc)
 	index = 1;
 	while (index < argc)
 	{
-		if (add_node_to_stack(head_a, ft_atoi(argv[index]), index))
+		if (add_node_to_stack(head_a, ft_atoi(argv[index])))
 		{
 			free_nodes(*head_a);
 			return (1);
