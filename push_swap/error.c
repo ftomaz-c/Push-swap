@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:46:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/05 17:06:00 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:36:30 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	checks_digits(char *arg)
 	return (0);
 }
 
-int	check_range(char *arg)
+int	checks_range(char *arg)
 {
 	long	num;
 
@@ -36,7 +36,7 @@ int	check_range(char *arg)
 	return (0);
 }
 
-int	check_duplicate(int argc, char **argv)
+int	checks_duplicate(int argc, char **argv)
 {
 	int	index1;
 	int	index2;
@@ -64,8 +64,8 @@ int	error_arg_type(int argc, char **argv)
 	while (index < argc)
 	{
 		if (checks_digits(argv[index]) ||
-			check_range(argv[index]) ||
-			check_duplicate(argc, argv))
+			checks_range(argv[index]) ||
+			checks_duplicate(argc, argv))
 			return (1);
 		index++;
 	}
