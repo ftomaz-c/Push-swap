@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:48:37 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 15:38:51 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:27:33 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_list	*create_node(int data, int index)
 	if (!temp)
 		return (NULL);
 	temp->data = data;
-	temp->index = index;
 	temp->next = NULL;
 	temp->prev = NULL;
 	return (temp);

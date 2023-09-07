@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:36:24 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 15:38:46 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:54:24 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_nodes(t_list *a)
 	free(a);
 }
 
-int	counts_nodes(t_list *head)
+int	size(t_list *head)
 {
 	int		count;
 	t_list	*current;

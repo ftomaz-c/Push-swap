@@ -6,23 +6,56 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 19:30:03 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/08/18 20:07:11 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:26:51 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb(t_list **head_a, t_list **head_b)
+void	push_operation(t_list **src, t_list **dest)
 {
-	t_list	*next;
-	t_list	*previous;
 	t_list	*tmp;
 
-	next = (*head_a)->next;
-	previous = (*head_a)->prev;
-	tmp = *head_a;
-	next->prev = previous;
-	previous->next = next;
-	*head_a = next;
-	*head_b = tmp;
+	if (!src || !(*src))
+		return ;
+	tmp = *src;
+	*src = (*src)->next;
+	if (*dest)
+	{
+		tmp->next = *dest;
+		tmp->prev = (*dest)->prev;
+		(*dest)->prev->next = tmp;
+		(*dest)->prev = tmp;
+	}
+	else
+	{
+		tmp->next = tmp;
+		tmp->prev = tmp;
+	}
+	*dest = tmp;
 }
+
+void	pa(t_list **head_a, t_list **head_b)
+{
+	push_operation(head_b, head_a);
+}
+
+void	pb(t_list **head_a, t_list **head_b)
+{
+	push_operation(head_a, head_b);
+}
+
+void	push(char *op, t_list **head_a, t_list **head_b)
+{
+	if (ft_strncmp(op, "pa", 2) == 0)
+	{
+		pa(head_a, head_b);
+		ft_printf("pa\n");
+	}
+	else if (ft_strncmp(op, "pb", 2) == 0)
+	{
+		pb(head_a, head_b);
+		ft_printf("pb\n");
+	}
+}
+
