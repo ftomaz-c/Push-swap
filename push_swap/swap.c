@@ -6,67 +6,54 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:28:17 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/08/18 19:27:52 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:32:54 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//sa or sb (swap a or b): swap the first 2 elements of stack a or b.
-// Do nothing if there is only one or no elements;
-//sa or sb (swap a or b): swap the first 2 elements of stack a or b.
-// Do nothing if there is only one or no elements;
-//ss: sa and sb at the same time;
+void	swap_operation(t_list **head)
+{
+	int	tmp;
+
+	if (!(*head) || !(*head)->next)
+		return ;
+	tmp = (*head)->data;
+	(*head)->data = (*head)->next->data;
+	(*head)->next->data = tmp;
+}
 
 void	sa(t_list **head_a)
 {
-	int		tmp;
-	t_list	*current;
-
-	current = (*head_a)->next;
-	tmp = current->data;
-	current->data = (*head_a)->data;
-	(*head_a)->data = tmp;
+	swap_operation(head_a);
 }
 
 void	sb(t_list **head_b)
 {
-	int		tmp;
-	t_list	*current;
-
-	current = (*head_b)->next;
-	tmp = current->data;
-	current->data = (*head_b)->data;
-	(*head_b)->data = tmp;
+	swap_operation(head_b);
 }
 
 void	ss(t_list **head_a, t_list **head_b)
 {
-	if (!*head_a || !*head_b)
-		return ;
 	sa(head_a);
 	sb(head_b);
 }
 
-void	swap(const char *str, ...)
+void	swap(const char *op, t_list **head_a, t_list **head_b)
 {
-	va_list	args;
-
-	va_start(args, str);
-	if (str[0] == 's' && str[1] == 'a')
+	if (ft_strncmp(op, "sa", 2) == 0)
 	{
-		sa(va_arg(args, t_list **));
+		sa(head_a);
 		ft_printf("sa\n");
 	}
-	else if (str[0] == 's' && str[1] == 'b')
+	else if (ft_strncmp(op, "sb", 2) == 0)
 	{
-		sb(va_arg(args, t_list **));
+		sb(head_b);
 		ft_printf("sb\n");
 	}
-	else if (str[0] == 's' && str[1] == 's')
+	else if (ft_strncmp(op, "ss", 2) == 0)
 	{
-		ss(va_arg(args, t_list **), va_arg(args, t_list **));
+		ss(head_a, head_b);
 		ft_printf("ss\n");
 	}
-	va_end(args);
 }

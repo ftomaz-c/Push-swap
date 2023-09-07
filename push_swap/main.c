@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:40:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/05 15:49:09 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:43:45 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	counts_nodes(t_list *head)
 
 	if (!head)
 		return (0);
-	current = head->next;
+	current = head;
 	count = 0;
 	while (current != NULL)
 	{
@@ -38,38 +38,12 @@ int	main(int argc, char **argv)
 
 	if (error_arg_type(argc, argv))
 		return (ft_printf("Error\n"));
-
 	if (argc > 2)
 	{
 		head_a = NULL;
 		head_b = NULL;
-
 		if (stack_init(&head_a, argv, argc))
 			return(ft_printf("Error\n"));
-
-		ft_printf("\nList A:\n");
-		t_list *current_a = head_a;
-		int	i = counts_nodes(head_a);
-		while (i >= 0)
-		{
-			ft_printf("index: %i, data: %i\n", current_a->index, current_a->data);
-			current_a = current_a->next;
-			i--;
-		}
-
-		ft_printf("\n");
-		pb(&head_a, &head_b);
-		i = counts_nodes(head_b);
-		ft_printf("%i\n", i);
-		ft_printf("\nList B:\n");
-		t_list *current_b = head_b;
-		while (i >= 0)
-		{
-			ft_printf("index: %i, data: %i\n", current_b->index, current_b->data);
-			i--;
-		}
-
-		ft_printf("\n");
 
 		free_nodes(head_a);
 	}
