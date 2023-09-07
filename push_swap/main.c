@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:40:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 17:44:16 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:52:00 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,24 @@ int	main(int argc, char **argv)
 		ft_printf("\n");
 
 		rotate("rr", &head_a, &head_b);
+		print_stack(head_a, "A");
+		print_stack(head_b, "B");
+
+		ft_printf("\n");
+
+		reverse_rotate("rra", &head_a, &head_b);
+		print_stack(head_a, "A");
+		print_stack(head_b, "B");
+
+		ft_printf("\n");
+
+		reverse_rotate("rrb", &head_a, &head_b);
+		print_stack(head_a, "A");
+		print_stack(head_b, "B");
+
+		ft_printf("\n");
+
+		reverse_rotate("rrr", &head_a, &head_b);
 		print_stack(head_a, "A");
 		print_stack(head_b, "B");
 
