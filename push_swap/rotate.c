@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:46:49 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 17:04:07 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:14:00 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	rotate_operation(t_list **head)
 {
-	if (!head || !(*head) || !(*head)->prev)
+	if (!head || !(*head) || !(*head)->next)
 		return ;
-	*head = (*head)->prev;
+	*head = (*head)->next;
 }
 
 void	ra(t_list **head_a)
