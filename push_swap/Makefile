@@ -1,5 +1,8 @@
 NAME = push_swap
-SRC = main.c error.c stack_init.c push_swap_utils.c swap.c push.c rotate.c reverse_rotate.c three_element_sort.c
+
+SRC =	main.c	error.c		stack_init.c		push_swap_utils.c		swap.c	\
+		push.c	rotate.c	reverse_rotate.c	small_stack.c
+
 OBJ = $(SRC:.c=.o)
 
 CC = cc

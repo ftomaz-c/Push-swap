@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:36:24 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/12 16:56:23 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/13 17:37:46 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,24 @@ int	is_not_organized(t_list *head)
 		|| head->next->data > head->prev->data)
 		return (1);
 	return (0);
+}
+
+int		is_in_order(t_list *head)
+{
+	t_list	*current;
+
+	current = head->next;
+	if (current == NULL || current->next == NULL)
+		return 1;
+	while (current)
+	{
+		if (!(head->data < current->data))
+			return (0);
+		current = current->next;
+		if (current == head)
+			break;
+	}
+	return (1);
 }
 
 void	print_stack(t_list *head, char *label)
@@ -59,7 +77,7 @@ void	free_nodes(t_list *a)
 	free(a);
 }
 
-int	size(t_list *head)
+int	stack_size(t_list *head)
 {
 	int		count;
 	t_list	*current;
