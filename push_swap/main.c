@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:40:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/13 17:28:37 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:09:29 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,33 @@ int	main(int argc, char **argv)
 	int		size;
 
 	if (error_arg_type(argc, argv))
-		return (ft_printf("Error\n"));
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (0);
+	}
 	if (argc > 2)
 	{
 		head_a = NULL;
 		head_b = NULL;
 		if (stack_init(&head_a, argv, argc))
-			return(ft_printf("Error\n"));
+		{
+			ft_putstr_fd("Error\n", 2);
+			return(0);
+		}
 
-		print_stack(head_a, "A");
-		print_stack(head_b, "B");
-		ft_printf("\n");
+		// print_stack(head_a, "A");
+		// print_stack(head_b, "B");
+		// ft_printf("\n");
 
-		ft_printf("-> moves <-\n");
+		// ft_printf("-> moves <-\n");
 		size = stack_size(head_a);
 		if (size <= 5)
 			small_stack(size, &head_a, &head_b);
-		ft_printf("\n");
+		// ft_printf("\n");
 
-		print_stack(head_a, "A");
-		print_stack(head_b, "B");
-		ft_printf("\n");
+		// print_stack(head_a, "A");
+		// print_stack(head_b, "B");
+		// ft_printf("\n");
 
 		free_nodes(head_a);
 	}
