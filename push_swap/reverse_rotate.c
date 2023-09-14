@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:46:49 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/12 15:13:53 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:39:37 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ void	rrr(t_list **head_a, t_list **head_b)
 
 void	reverse_rotate(char *op, t_list **head_a, t_list **head_b)
 {
-	if (ft_strncmp(op, "rra", 3) == 0)
+	if (ft_strncmp(op, RRA, 3) == 0)
 	{
 		rra(head_a);
 		ft_printf("rra\n");
 	}
-	else if (ft_strncmp(op, "rrb", 3) == 0)
+	else if (ft_strncmp(op, RRB, 3) == 0)
 	{
 		rrb(head_b);
 		ft_printf("rrb\n");
 	}
-	else if (ft_strncmp(op, "rrr", 3) == 0)
+	else if (ft_strncmp(op, RRR, 3) == 0)
 	{
 		rrr(head_a, head_b);
 		ft_printf("rrr\n");

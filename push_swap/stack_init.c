@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:48:37 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 17:02:37 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:20:53 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,37 @@
 
 t_list	*create_node(int data)
 {
-	t_list	*temp;
+	t_list	*new_node;
 
-	temp = malloc(sizeof(t_list));
-	if (!temp)
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
 		return (NULL);
-	temp->data = data;
-	temp->next = NULL;
-	temp->prev = NULL;
-	return (temp);
+	new_node->data = data;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	return (new_node);
 }
 
 int	add_node_to_stack(t_list **head_a, int data)
 {
-	t_list	*temp;
-	t_list	*last;
+	t_list	*tmp;
+	t_list	*last_node;
 
-	temp = create_node(data);
-	if (!temp)
+	tmp = create_node(data);
+	if (!tmp)
 		return (1);
 	if (!*head_a)
 	{
-		*head_a = temp;
-		temp->next = temp;
-		temp->prev = temp;
+		*head_a = tmp;
+		tmp->next = tmp;
+		tmp->prev = tmp;
 		return (0);
 	}
-	last = (*head_a)->prev;
-	last->next = temp;
-	temp->prev = last;
-	temp->next = *head_a;
-	(*head_a)->prev = temp;
+	last_node = (*head_a)->prev;
+	last_node->next = tmp;
+	tmp->prev = last_node;
+	tmp->next = *head_a;
+	(*head_a)->prev = tmp;
 	return (0);
 }
 

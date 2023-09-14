@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 19:30:03 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 17:34:48 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:37:46 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	pb(t_list **head_a, t_list **head_b)
 
 void	push(char *op, t_list **head_a, t_list **head_b)
 {
-	if (ft_strncmp(op, "pa", 2) == 0)
+	if (ft_strncmp(op, PA, 2) == 0)
 	{
 		pa(head_a, head_b);
 		ft_printf("pa\n");
 	}
-	else if (ft_strncmp(op, "pb", 2) == 0)
+	else if (ft_strncmp(op, PB, 2) == 0)
 	{
 		pb(head_a, head_b);
 		ft_printf("pb\n");

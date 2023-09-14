@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:28:17 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 15:32:54 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:36:39 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void	ss(t_list **head_a, t_list **head_b)
 
 void	swap(const char *op, t_list **head_a, t_list **head_b)
 {
-	if (ft_strncmp(op, "sa", 2) == 0)
+	if (ft_strncmp(op, SA, 2) == 0)
 	{
 		sa(head_a);
 		ft_printf("sa\n");
 	}
-	else if (ft_strncmp(op, "sb", 2) == 0)
+	else if (ft_strncmp(op, SB, 2) == 0)
 	{
 		sb(head_b);
 		ft_printf("sb\n");
 	}
-	else if (ft_strncmp(op, "ss", 2) == 0)
+	else if (ft_strncmp(op, SS, 2) == 0)
 	{
 		ss(head_a, head_b);
 		ft_printf("ss\n");

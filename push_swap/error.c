@@ -6,13 +6,13 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:46:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/07 16:42:32 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:16:34 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	checks_digits(char *arg)
+int	has_only_digits(char *arg)
 {
 	int	i;
 
@@ -26,17 +26,15 @@ int	checks_digits(char *arg)
 	return (0);
 }
 
-int	checks_range(char *arg)
+int	is_within_range(char *arg)
 {
 	long	num;
 
 	num = ft_atol(arg);
-	if (num > INT_MAX || num < INT_MIN)
-		return (1);
-	return (0);
+	return (num > INT_MAX || num < INT_MIN);
 }
 
-int	checks_duplicate(int argc, char **argv)
+int	has_duplicates(int argc, char **argv)
 {
 	int	index1;
 	int	index2;
@@ -63,11 +61,9 @@ int	error_arg_type(int argc, char **argv)
 	index = 1;
 	while (index < argc)
 	{
-		if (checks_digits(argv[index]) ||
-			checks_range(argv[index]) ||
-			checks_duplicate(argc, argv))
+		if (has_only_digits(argv[index]) || is_within_range(argv[index]))
 			return (1);
 		index++;
 	}
-	return (0);
+	return (has_duplicates(argc, argv));
 }

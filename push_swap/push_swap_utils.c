@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:36:24 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/13 17:37:46 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:26:02 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,12 @@ int	stack_size(t_list *head)
 
 	if (!head)
 		return (0);
-	current = head;
-	count = 0;
-	while (current != NULL)
+	current = head->next;
+	count = 1;
+	while (current != head)
 	{
 		count++;
 		current = current->next;
-		if (current == head)
-			break ;
 	}
 	return (count);
 }
