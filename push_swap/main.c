@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:40:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/14 10:55:55 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:58:12 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,33 @@ int	main(int argc, char **argv)
 			return(0);
 		}
 
-		// print_stack(head_a, "A");
-		// print_stack(head_b, "B");
-		// ft_printf("\n");
+		ft_printf("\n-------------------------\n");
+		ft_printf("\n");
+		print_stack(head_a, "A");
+		ft_printf("\n");
+		print_stack(head_b, "B");
+		ft_printf("\n");
+		ft_printf("-------------------------\n");
 
-		// ft_printf("-> moves <-\n");
+		ft_printf("\n");
+
+		ft_printf("-> moves <-\n");
+
 		size = stack_size(head_a);
 		if (size <= 5)
 			small_stack(size, &head_a, &head_b);
-		// if (size > 5)
-		// 	big_stack(&head_a, &head_b);
-		// ft_printf("\n");
+		if (size > 5)
+			big_stack(&head_a, &head_b);
 
-		// print_stack(head_a, "A");
-		// print_stack(head_b, "B");
-		// ft_printf("\n");
+		ft_printf("\n");
+
+		ft_printf("\n-------------------------\n");
+		ft_printf("\n");
+		print_stack(head_a, "A");
+		ft_printf("\n");
+		print_stack(head_b, "B");
+		ft_printf("\n");
+		ft_printf("-------------------------\n");
 
 		free_nodes(head_a);
 	}

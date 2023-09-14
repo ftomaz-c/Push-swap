@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:18:08 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/14 11:31:22 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:58:57 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,9 @@ void	reverse_rotate(char *op, t_list **head_a, t_list **head_b);
 
 /*small_stack.c*/
 void	small_stack(int	size, t_list **head_a, t_list **head_b);
+
+/*big_stack.c*/
+void	big_stack(t_list **head_a, t_list **head_b);
+void	split_stack(int size, int	pivot, t_list **head_a, t_list **head_b);
 
 #endif
