@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:18:08 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/14 15:58:57 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:02:41 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft/includes/libft.h"
 # include <limits.h>
 # include <stdbool.h>
+# include <math.h>
 
 # define SA "sa"
 # define SB "sb"
@@ -59,7 +60,9 @@ void	reverse_rotate(char *op, t_list **head_a, t_list **head_b);
 void	small_stack(int	size, t_list **head_a, t_list **head_b);
 
 /*big_stack.c*/
-void	big_stack(t_list **head_a, t_list **head_b);
-void	split_stack(int size, int	pivot, t_list **head_a, t_list **head_b);
+void	big_stack(int size, t_list **head_a, t_list **head_b);
+void	ten_stack_sort(t_list **head_a, t_list **head_b);
+void	quick_sort(int *arr, int lo, int hi);
+void	hundred_stack_sort(int idx, int size, t_list **head_a, t_list **head_b, int *tab);
 
 #endif

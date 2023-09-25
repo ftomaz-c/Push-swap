@@ -3,7 +3,8 @@ NAME = push_swap
 
 # Source and Object files
 SRC =	main.c	error.c		stack_init.c		push_swap_utils.c		swap.c	\
-		push.c	rotate.c	reverse_rotate.c	small_stack.c			big_stack.c
+		push.c	rotate.c	reverse_rotate.c	small_stack.c			big_stack.c \
+		quick_sort.c
 OBJ = $(SRC:.c=.o)
 
 # Compiler and Flags
@@ -27,7 +28,7 @@ $(OBJ): %.o: %.c
 
 # Main target
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME) -lm
 
 # Additional targets
 clean:

@@ -6,11 +6,11 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:58:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/19 03:59:03 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/19 04:11:24 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "push_swap.h"
 
 int		partition(int arr[], int lo, int hi);
 void	quick_sort(int *arr, int lo, int hi);

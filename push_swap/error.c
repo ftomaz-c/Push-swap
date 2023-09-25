@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:46:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/14 11:16:34 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/19 03:03:32 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	has_only_digits(char *arg)
 	int	i;
 
 	i = 0;
+	if (arg[0] == '-' || arg[0] == '+')
+		i++;
 	while(arg[i] != '\0')
 	{
 		if (!ft_isdigit(arg[i]))
