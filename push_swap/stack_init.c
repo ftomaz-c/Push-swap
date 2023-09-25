@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:48:37 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/14 11:20:53 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:47:58 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ t_list	*create_node(int data)
 	if (!new_node)
 		return (NULL);
 	new_node->data = data;
+	new_node->up_cost = 0;
+	new_node->down_cost = 0;
+	new_node->total_cost = 0;
+	new_node->target = NULL;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);

@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:18:08 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/21 15:02:41 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:59:29 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 typedef struct s_list
 {
 	int				data;
+	size_t			up_cost;
+	size_t			down_cost;
+	int				total_cost;
+	struct s_list	*target;
 	struct s_list	*prev;
 	struct s_list	*next;
 }				t_list;
@@ -50,6 +54,15 @@ void	print_stack(t_list *head, char *label);
 int		is_not_organized(t_list *head);
 int		is_in_order(t_list *head);
 
+int		find_min(int size, t_list *head);
+int		find_max(t_list *head);
+int		get_index(t_list *head, int data);
+int		*create_tab(int size, t_list *head);
+int		*sort_tab(int size, t_list *head);
+
+int		determine_partitions(int stack_size);
+int		median(int size);
+
 /*operations*/
 void	swap(const char *op, t_list **head_a, t_list **head_b);
 void	push(char *op, t_list **head_a, t_list **head_b);
@@ -63,6 +76,6 @@ void	small_stack(int	size, t_list **head_a, t_list **head_b);
 void	big_stack(int size, t_list **head_a, t_list **head_b);
 void	ten_stack_sort(t_list **head_a, t_list **head_b);
 void	quick_sort(int *arr, int lo, int hi);
-void	hundred_stack_sort(int idx, int size, t_list **head_a, t_list **head_b, int *tab);
+void	stack_sort(int idx, int size, t_list **head_a, t_list **head_b, int *tab);
 
 #endif
