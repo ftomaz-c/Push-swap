@@ -4,7 +4,7 @@ NAME = push_swap
 # Source and Object files
 SRC =	main.c	error.c		stack_init.c		push_swap_utils_1.c		swap.c	\
 		push.c	rotate.c	reverse_rotate.c	small_stack.c			big_stack.c \
-		quick_sort.c 		push_swap_utils_2.c	push_swap_utils_3.c
+		quick_sort.c 		push_swap_utils_2.c	push_swap_utils_3.c		sort_stack.c
 OBJ = $(SRC:.c=.o)
 
 # Compiler and Flags

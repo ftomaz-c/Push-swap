@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:18:08 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/25 17:59:29 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:23:12 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,8 @@ void	big_stack(int size, t_list **head_a, t_list **head_b);
 void	ten_stack_sort(t_list **head_a, t_list **head_b);
 void	quick_sort(int *arr, int lo, int hi);
 void	stack_sort(int idx, int size, t_list **head_a, t_list **head_b, int *tab);
+
+void	stack_sort_3(t_list **head_a, t_list **head_b);
+
 
 #endif

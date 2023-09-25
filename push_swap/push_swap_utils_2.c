@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:51:10 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/25 17:51:55 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:20:42 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	find_min(int size, t_list *head)
 {
-	int	min;
+	int		min;
 	t_list	*current;
-	int	i;
+	int		i;
 
 	min = INT_MAX;
 	current = head;
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		if (current->data < min)
 			min = current->data;
@@ -33,18 +33,18 @@ int	find_min(int size, t_list *head)
 
 int	find_max(t_list *head)
 {
-	int	max;
+	int		max;
 	t_list	*current;
 
 	max = INT_MIN;
 	current = head;
-	while(current)
+	while (current)
 	{
 		if (current->data > max)
 			max = current->data;
 		current = current->next;
 		if (current == head)
-			break;
+			break ;
 	}
 	return (max);
 }
@@ -59,20 +59,20 @@ int	get_index(t_list *head, int data)
 	while (current)
 	{
 		if (current->data == data)
-			break;
+			break ;
 		count++;
 		current = current->next;
 		if (current == head)
-			break;
+			break ;
 	}
 	return (count);
 }
 
 int	*create_tab(int size, t_list *head)
 {
-	int	*tab;
+	int		*tab;
 	t_list	*current;
-	int	i;
+	int		i;
 
 	tab = malloc(sizeof(int) * size);
 	if (!tab)
