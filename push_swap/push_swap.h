@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:18:08 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/25 18:23:12 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:25:47 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft/includes/libft.h"
 # include <limits.h>
 # include <stdbool.h>
-# include <math.h>
 
 # define SA "sa"
 # define SB "sb"
@@ -29,39 +28,73 @@
 # define RRA "rra"
 # define RRB "rrb"
 # define RRR "rrr"
+# define DOWNDOWN 1
+# define UPUP 2
+# define DOWNUP 3
+# define UPDOWN 4
+
+typedef struct move_flags
+{
+	size_t		move_up;
+	size_t		move_down;
+	size_t		move_target_up;
+	size_t		move_target_down;
+	size_t		moves;
+}	move_flags;
+
+typedef struct move_costs
+{
+	size_t				up_cost;
+	size_t				up_target_cost;
+	size_t				down_cost;
+	size_t				down_target_cost;
+	int					total_cost;
+}	move_costs;
 
 typedef struct s_list
 {
-	int				data;
-	size_t			up_cost;
-	size_t			down_cost;
-	int				total_cost;
-	struct s_list	*target;
-	struct s_list	*prev;
-	struct s_list	*next;
+	int					data;
+	int					position;
+	struct move_costs	move_costs;
+	struct move_flags	move_flags;
+	struct s_list		*target;
+	struct s_list		*prev;
+	struct s_list		*next;
 }				t_list;
 
 /*error.c*/
 int		error_arg_type(int argc, char **argv);
+int		has_only_digits(char *arg);
+int		is_within_range(char *arg);
+int		has_duplicates(int argc, char **argv);
 
-/*stack_init.c*/
+/*create_stack.c*/
+int		create_stack(int argc, char **argv, t_list **head_a);
 int		stack_init(t_list **head_a, char **argv, int argc);
+int		add_node_to_stack(t_list **head_a, int data);
+t_list	*create_node(int data);
 
-/*push_swap_utils.c*/
-int		stack_size(t_list *head);
-void	free_nodes(t_list *a);
-void	print_stack(t_list *head, char *label);
+
+/*push_swap_utils_1.c*/
+void	free_argv(char **argv);
+char	*args_to_str(int argc, char **argv);
+int		count_args(char **argv);
+char	**argv_split(int argc, char **argv);
+
+/*push_swap_utils_2.c*/
 int		is_not_organized(t_list *head);
 int		is_in_order(t_list *head);
+void	print_stack(t_list *head, char *label);
+void	free_nodes(t_list *a);
+int		stack_size(t_list *head);
 
+
+/*push_swap_utils_3.c*/
 int		find_min(int size, t_list *head);
 int		find_max(t_list *head);
 int		get_index(t_list *head, int data);
 int		*create_tab(int size, t_list *head);
 int		*sort_tab(int size, t_list *head);
-
-int		determine_partitions(int stack_size);
-int		median(int size);
 
 /*operations*/
 void	swap(const char *op, t_list **head_a, t_list **head_b);
@@ -72,13 +105,26 @@ void	reverse_rotate(char *op, t_list **head_a, t_list **head_b);
 /*small_stack.c*/
 void	small_stack(int	size, t_list **head_a, t_list **head_b);
 
+void	quick_sort(int *arr, int lo, int hi);
+
 /*big_stack.c*/
 void	big_stack(int size, t_list **head_a, t_list **head_b);
-void	ten_stack_sort(t_list **head_a, t_list **head_b);
-void	quick_sort(int *arr, int lo, int hi);
-void	stack_sort(int idx, int size, t_list **head_a, t_list **head_b, int *tab);
+void	simple_sort(t_list **head_a, t_list **head_b);
 
-void	stack_sort_3(t_list **head_a, t_list **head_b);
+t_list	*get_cheapest(t_list **head_b);
+void	complex_sort_1(int idx, int size, t_list **head_a, t_list **head_b, int *tab);
+void	complex_sort_2(t_list **head_a, t_list **head_b);
 
+void	make_moves(t_list *current, t_list **head_a, t_list **head_b);
+void	updown(t_list *current, t_list **head_a, t_list **head_b);
+void	downup(t_list *current, t_list **head_a, t_list **head_b);
+void	downdown(t_list *current, t_list **head_a, t_list **head_b);
+void	upup(t_list *current, t_list **head_a, t_list **head_b);
+
+void	refresh_info(t_list **head_a, t_list **head_b);
+void	set_moves(t_list **current);
+void	set_costs(t_list **current, t_list *head_a, t_list *head_b);
+void	reset_costs(t_list **current);
+t_list	*get_target(t_list *head_a, int data);
 
 #endif

@@ -2,17 +2,22 @@
 NAME = push_swap
 
 # Source and Object files
-SRC =	main.c	error.c		stack_init.c		push_swap_utils_1.c		swap.c	\
-		push.c	rotate.c	reverse_rotate.c	small_stack.c			big_stack.c \
-		quick_sort.c 		push_swap_utils_2.c	push_swap_utils_3.c		sort_stack.c
+SRC =	main.c					error.c					create_stack.c			push.c			\
+		rotate.c				swap.c					reverse_rotate.c		small_stack.c	\
+		big_stack.c				complex_sort.c			quick_sort.c 							\
+		push_swap_utils_1.c		push_swap_utils_2.c		push_swap_utils_3.c						\
+		complex_moves_utils.c	complex_push_swap_utils.c
+
 OBJ = $(SRC:.c=.o)
 
 # Compiler and Flags
 CC = cc
+
 CFLAGS = -Wall -Wextra -Werror -g
 
 # Includes and libraries
 INCLUDES = -I./libft/includes
+
 LIBFT = libft/libft.a
 
 # Default target

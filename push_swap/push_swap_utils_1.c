@@ -1,95 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   push_swap_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 15:36:24 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/14 11:26:02 by ftomaz-c         ###   ########.fr       */
+/*   Created: 2023/09/25 17:58:41 by ftomaz-c          #+#    #+#             */
+/*   Updated: 2023/09/28 16:14:10 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_not_organized(t_list *head)
+void	free_argv(char **argv)
 {
-	if (head->data > head->next->data
-		|| head->data > head->prev->data
-		|| head->next->data > head->prev->data)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (argv[i] != NULL)
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
 }
 
-int		is_in_order(t_list *head)
+char	*args_to_str(int argc, char **argv)
 {
-	t_list	*current;
+	char	*str;
+	char	*tmp;
+	char	*space;
+	int		i;
 
-	current = head->next;
-	if (current == NULL || current->next == NULL)
-		return 1;
-	while (current)
+	str = NULL;
+	i = 1;
+	while (i < argc)
 	{
-		if (!(head->data < current->data))
-			return (0);
-		current = current->next;
-		if (current == head)
-			break;
+		if (str == NULL)
+			str = ft_strdup(argv[i]);
+		else
+		{
+			space = " ";
+			tmp = ft_strjoin(str, space);
+			free(str);
+			str = ft_strjoin(tmp, argv[i]);
+			free(tmp);
+		}
+		i++;
 	}
-	return (1);
+	return (str);
 }
 
-void	print_stack(t_list *head, char *label)
+int	count_args(char **argv)
 {
-	t_list *current;
+	int	i;
 
-	current = head;
-	ft_printf("Stack %s: ", label);
-	if (!head)
-	{
-		ft_printf("(null)\n");
-		return ;
-	}
-	while (current->next != NULL)
-	{
-		ft_printf("%d ", current->data);
-		current = current->next;
-		if (current == head)
-			break;
-	}
-	ft_printf("\n");
+	i = 0;
+	while (argv[i])
+		i++;
+	return (i);
 }
 
-void	free_nodes(t_list *a)
+char	**argv_split(int argc, char **argv)
 {
-	t_list	*current;
-	t_list	*temp;
+	char	*str;
 
-	if (!a)
-		return ;
-	current = a->next;
-	while (current != a)
-	{
-		temp = current;
-		current = current->next;
-		free(temp);
-	}
-	free(a);
-}
-
-int	stack_size(t_list *head)
-{
-	int		count;
-	t_list	*current;
-
-	if (!head)
-		return (0);
-	current = head->next;
-	count = 1;
-	while (current != head)
-	{
-		count++;
-		current = current->next;
-	}
-	return (count);
+	str = args_to_str(argc, argv);
+	argv = ft_split(str, " ");
+	free(str);
+	return(argv);
 }

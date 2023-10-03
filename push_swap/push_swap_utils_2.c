@@ -1,100 +1,95 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_2.c                                :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 17:51:10 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/25 18:20:42 by ftomaz-c         ###   ########.fr       */
+/*   Created: 2023/09/07 15:36:24 by ftomaz-c          #+#    #+#             */
+/*   Updated: 2023/09/14 11:26:02 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min(int size, t_list *head)
+int	is_not_organized(t_list *head)
 {
-	int		min;
-	t_list	*current;
-	int		i;
-
-	min = INT_MAX;
-	current = head;
-	i = 0;
-	while (i < size)
-	{
-		if (current->data < min)
-			min = current->data;
-		current = current->next;
-		i++;
-	}
-	return (min);
+	if (head->data > head->next->data
+		|| head->data > head->prev->data
+		|| head->next->data > head->prev->data)
+		return (1);
+	return (0);
 }
 
-int	find_max(t_list *head)
+int		is_in_order(t_list *head)
 {
-	int		max;
 	t_list	*current;
 
-	max = INT_MIN;
-	current = head;
+	current = head->next;
+	if (current == NULL || current->next == NULL)
+		return 1;
 	while (current)
 	{
-		if (current->data > max)
-			max = current->data;
+		if (!(head->data < current->data))
+			return (0);
 		current = current->next;
 		if (current == head)
-			break ;
+			break;
 	}
-	return (max);
+	return (1);
 }
 
-int	get_index(t_list *head, int data)
+void	print_stack(t_list *head, char *label)
 {
-	int	count;
-	t_list	*current;
+	t_list *current;
 
 	current = head;
-	count = 0;
-	while (current)
+	ft_printf("Stack %s: ", label);
+	if (!head)
 	{
-		if (current->data == data)
-			break ;
+		ft_printf("(null)\n");
+		return ;
+	}
+	while (current->next != NULL)
+	{
+		ft_printf("%d ", current->data);
+		current = current->next;
+		if (current == head)
+			break;
+	}
+	ft_printf("\n");
+}
+
+void	free_nodes(t_list *a)
+{
+	t_list	*current;
+	t_list	*temp;
+
+	if (!a)
+		return ;
+	current = a->next;
+	while (current != a)
+	{
+		temp = current;
+		current = current->next;
+		free(temp);
+	}
+	free(a);
+}
+
+int	stack_size(t_list *head)
+{
+	int		count;
+	t_list	*current;
+
+	if (!head)
+		return (0);
+	current = head->next;
+	count = 1;
+	while (current != head)
+	{
 		count++;
 		current = current->next;
-		if (current == head)
-			break ;
 	}
 	return (count);
-}
-
-int	*create_tab(int size, t_list *head)
-{
-	int		*tab;
-	t_list	*current;
-	int		i;
-
-	tab = malloc(sizeof(int) * size);
-	if (!tab)
-		return (NULL);
-	current = head;
-	i = 0;
-	while (i < size)
-	{
-		tab[i] = current->data;
-		current = current->next;
-		i++;
-	}
-	return (tab);
-}
-
-int	*sort_tab(int size, t_list *head)
-{
-	int	*tab;
-
-	tab = create_tab(size, head);
-	if (!tab)
-		return (NULL);
-	quick_sort(tab, 0, size - 1);
-	return (tab);
 }
