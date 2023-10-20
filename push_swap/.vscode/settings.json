@@ -4,6 +4,21 @@
 		"string_view": "c",
 		"initializer_list": "c",
 		"string": "c",
-		"chrono": "c"
-	}
+		"chrono": "c",
+		"fstream": "c",
+		"istream": "c",
+		"limits": "c",
+		"functional": "c",
+		"regex": "c",
+		"typeinfo": "c",
+		"libft.h": "c",
+		"push_swap.h": "c",
+		"bitset": "c"
+	},
+	"cSpell.words": [
+		"DOWNDOWN",
+		"DOWNUP",
+		"UPDOWN",
+		"UPUP"
+	]
 }
