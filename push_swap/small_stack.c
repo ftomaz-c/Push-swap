@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:54:06 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/28 17:03:18 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:14:45 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	three_element_sort(t_list **head_a, t_list **head_b)
 					swap(SA, head_a, head_b);
 				else
 					reverse_rotate(RRA, head_a, head_b);
-				continue;
+				continue ;
 			}
 			else
 				swap(SA, head_a, head_b);
@@ -40,7 +40,7 @@ void	three_element_sort(t_list **head_a, t_list **head_b)
 	}
 }
 
-void	four_five_element_sort (t_list **head_a, t_list **head_b)
+void	four_five_element_sort(t_list **head_a, t_list **head_b)
 {
 	int	min;
 	int	index;
@@ -63,14 +63,4 @@ void	four_five_element_sort (t_list **head_a, t_list **head_b)
 	three_element_sort(head_a, head_b);
 	while ((*head_b))
 		push (PA, head_a, head_b);
-}
-
-void	small_stack(int	size, t_list **head_a, t_list **head_b)
-{
-	if (size == 2)
-		two_element_sort(head_a, head_b);
-	else if (size == 3)
-		three_element_sort(head_a, head_b);
-	else
-		four_five_element_sort(head_a, head_b);
 }

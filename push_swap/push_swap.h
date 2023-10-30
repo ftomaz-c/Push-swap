@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:18:08 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/03 16:25:47 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:20:00 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ typedef struct move_flags
 {
 	size_t		move_up;
 	size_t		move_down;
-	size_t		move_target_up;
-	size_t		move_target_down;
+	size_t		move_tg_up;
+	size_t		move_tg_down;
 	size_t		moves;
-}	move_flags;
+}	t_move_flags;
 
 typedef struct move_costs
 {
 	size_t				up_cost;
-	size_t				up_target_cost;
+	size_t				up_tg_cost;
 	size_t				down_cost;
-	size_t				down_target_cost;
+	size_t				down_tg_cost;
 	int					total_cost;
-}	move_costs;
+}	t_move_costs;
 
 typedef struct s_list
 {
@@ -57,10 +57,10 @@ typedef struct s_list
 	int					position;
 	struct move_costs	move_costs;
 	struct move_flags	move_flags;
-	struct s_list		*target;
+	struct s_list		*tg;
 	struct s_list		*prev;
 	struct s_list		*next;
-}				t_list;
+}	t_list;
 
 /*error.c*/
 int		error_arg_type(int argc, char **argv);
@@ -74,6 +74,13 @@ int		stack_init(t_list **head_a, char **argv, int argc);
 int		add_node_to_stack(t_list **head_a, int data);
 t_list	*create_node(int data);
 
+void	init_sort(t_list **head_a, t_list **head_b);
+void	small_stack(int size, t_list **head_a, t_list **head_b);
+void	big_stack(int size, t_list **head_a, t_list **head_b);
+
+void	two_element_sort(t_list **head_a, t_list **head_b);
+void	three_element_sort(t_list **head_a, t_list **head_b);
+void	four_five_element_sort(t_list **head_a, t_list **head_b);
 
 /*push_swap_utils_1.c*/
 void	free_argv(char **argv);
@@ -102,16 +109,13 @@ void	push(char *op, t_list **head_a, t_list **head_b);
 void	rotate(char *op, t_list **head_a, t_list **head_b);
 void	reverse_rotate(char *op, t_list **head_a, t_list **head_b);
 
-/*small_stack.c*/
-void	small_stack(int	size, t_list **head_a, t_list **head_b);
-
 void	quick_sort(int *arr, int lo, int hi);
 
-/*big_stack.c*/
-void	big_stack(int size, t_list **head_a, t_list **head_b);
+/*simple_sort.c*/
 void	simple_sort(t_list **head_a, t_list **head_b);
 
 t_list	*get_cheapest(t_list **head_b);
+void	complex_sort(int size, t_list **head_a, t_list **head_b);
 void	complex_sort_1(int idx, int size, t_list **head_a, t_list **head_b, int *tab);
 void	complex_sort_2(t_list **head_a, t_list **head_b);
 

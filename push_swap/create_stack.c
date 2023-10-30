@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:12:57 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/28 16:59:23 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:01:01 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ t_list	*create_node(int data)
 		return (NULL);
 	new_node->data = data;
 	new_node->move_costs.up_cost = 0;
-	new_node->move_costs.up_target_cost = 0;
+	new_node->move_costs.up_tg_cost = 0;
 	new_node->move_costs.down_cost = 0;
-	new_node->move_costs.down_target_cost = 0;
+	new_node->move_costs.down_tg_cost = 0;
 	new_node->move_costs.total_cost = 0;
 	new_node->move_flags.move_down = 0;
 	new_node->move_flags.move_up = 0;
-	new_node->move_flags.move_target_down = 0;
-	new_node->move_flags.move_target_up = 0;
+	new_node->move_flags.move_tg_down = 0;
+	new_node->move_flags.move_tg_up = 0;
 	new_node->move_flags.moves = 0;
-	new_node->target = NULL;
+	new_node->tg = NULL;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);

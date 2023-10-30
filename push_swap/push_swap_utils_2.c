@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   push_swap_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:36:24 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/14 11:26:02 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:41:05 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,25 @@ int	is_not_organized(t_list *head)
 	return (0);
 }
 
-int		is_in_order(t_list *head)
+int	is_in_order(t_list *head)
 {
 	t_list	*current;
 
-	current = head->next;
-	if (current == NULL || current->next == NULL)
-		return 1;
+	current = head;
 	while (current)
 	{
-		if (!(head->data < current->data))
+		if (current->data > current->next->data)
 			return (0);
 		current = current->next;
-		if (current == head)
-			break;
+		if (current->next == head)
+			break ;
 	}
 	return (1);
 }
 
 void	print_stack(t_list *head, char *label)
 {
-	t_list *current;
+	t_list	*current;
 
 	current = head;
 	ft_printf("Stack %s: ", label);
@@ -55,7 +53,7 @@ void	print_stack(t_list *head, char *label)
 		ft_printf("%d ", current->data);
 		current = current->next;
 		if (current == head)
-			break;
+			break ;
 	}
 	ft_printf("\n");
 }

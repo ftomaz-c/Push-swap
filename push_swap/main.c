@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 13:40:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/28 17:02:26 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:17:17 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ int	main(int argc, char **argv)
 {
 	t_list	*head_a;
 	t_list	*head_b;
-	int		size;
 
+	if (!argv[1])
+		return (0);
 	argv = argv_split(argc, argv);
 	argc = count_args(argv);
 	if (error_arg_type(argc, argv))
@@ -49,15 +50,11 @@ int	main(int argc, char **argv)
 		head_a = NULL;
 		head_b = NULL;
 		if (create_stack(argc, argv, &head_a))
-		{
-			size = stack_size(head_a);
-			if (size <= 5)
-				small_stack(size, &head_a, &head_b);
-			else if (size > 5)
-				big_stack(size, &head_a, &head_b);
-		}
+			init_sort(&head_a, &head_b);
 		free_nodes(head_a);
 	}
+	else
+		free_argv(argv);
 	return (0);
 }
 

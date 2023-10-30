@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:21:17 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/03 16:27:15 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:05:01 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*get_cheapest(t_list **head_b)
 	total_cost = INT_MAX;
 	size = stack_size(*head_b);
 	i = 0;
-	while (i < size)
+	while (i++ < size)
 	{
 		if (current->move_costs.total_cost < total_cost)
 		{
@@ -37,9 +37,24 @@ t_list	*get_cheapest(t_list **head_b)
 				cheapest = current;
 		}
 		current = current->next;
-		i++;
 	}
 	return (cheapest);
+}
+
+void	complex_sort(int size, t_list **head_a, t_list **head_b)
+{
+	int	current_index;
+	int	*sorted_array;
+
+	sorted_array = sort_tab(size, *head_a);
+	current_index = size / 4;
+	complex_sort_1(current_index, size, head_a, head_b, sorted_array);
+	free (sorted_array);
+	if (stack_size(*head_a) == 3)
+		small_stack(3, head_a, head_b);
+	else
+		simple_sort(head_a, head_b);
+	complex_sort_2(head_a, head_b);
 }
 
 void	complex_sort_1(int idx, int size, t_list **head_a, t_list **head_b, int *tab)
@@ -72,8 +87,8 @@ void	complex_sort_1(int idx, int size, t_list **head_a, t_list **head_b, int *ta
 			{
 				if ((*head_b)->data >= key_median)
 					rotate(RB, head_a, head_b);
-				else if ((*head_b)->data < key_median)
-					swap(SB, head_a, head_b);
+				/* else if ((*head_b)->data < key_median)
+					swap(SB, head_a, head_b); */
 			}
 			if ((*head_a))
 				current = *head_a;

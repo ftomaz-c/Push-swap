@@ -4,7 +4,7 @@ NAME = push_swap
 # Source and Object files
 SRC =	main.c					error.c					create_stack.c			push.c			\
 		rotate.c				swap.c					reverse_rotate.c		small_stack.c	\
-		big_stack.c				complex_sort.c			quick_sort.c 							\
+		simple_sort.c			complex_sort.c			quick_sort.c			init_sort.c		\
 		push_swap_utils_1.c		push_swap_utils_2.c		push_swap_utils_3.c						\
 		complex_moves_utils.c	complex_push_swap_utils.c
 

@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:46:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/19 03:03:32 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:54:23 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	has_only_digits(char *arg)
 	i = 0;
 	if (arg[0] == '-' || arg[0] == '+')
 		i++;
-	while(arg[i] != '\0')
+	if (arg[i] == '\0')
+		return (1);
+	while (arg[i] != '\0')
 	{
 		if (!ft_isdigit(arg[i]))
 			return (1);
@@ -41,7 +43,7 @@ int	has_duplicates(int argc, char **argv)
 	int	index1;
 	int	index2;
 
-	index1 = 1;
+	index1 = 0;
 	while (index1 < argc)
 	{
 		index2 = index1 + 1;
@@ -60,7 +62,7 @@ int	error_arg_type(int argc, char **argv)
 {
 	int		index;
 
-	index = 1;
+	index = 0;
 	while (index < argc)
 	{
 		if (has_only_digits(argv[index]) || is_within_range(argv[index]))

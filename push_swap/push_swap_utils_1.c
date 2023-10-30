@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:58:41 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/28 16:14:10 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:34:57 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ char	**argv_split(int argc, char **argv)
 	str = args_to_str(argc, argv);
 	argv = ft_split(str, " ");
 	free(str);
-	return(argv);
+	return (argv);
 }
