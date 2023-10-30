@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_2.c                                :+:      :+:    :+:   */
+/*   push_swap_utils_3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:51:10 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/26 16:12:57 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:29:15 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	find_max(t_list *head)
 
 int	get_index(t_list *head, int data)
 {
-	int	count;
+	int		count;
 	t_list	*current;
 
 	current = head;
@@ -64,7 +64,7 @@ int	get_index(t_list *head, int data)
 			count++;
 		current = current->next;
 		if (current == head)
-			return (0) ;
+			return (0);
 	}
 	return (0);
 }
