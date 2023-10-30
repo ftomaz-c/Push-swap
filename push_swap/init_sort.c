@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:14:17 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/30 18:16:12 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:48:04 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ void	init_sort(t_list **head_a, t_list **head_b)
 
 	size = 0;
 	if (is_in_order(*head_a))
-	{
-		free_nodes(*head_a);
 		return ;
-	}
 	size = stack_size(*head_a);
 	if (size <= 5)
 		small_stack(size, head_a, head_b);
