@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 19:30:03 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/30 18:30:14 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:38:11 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	push_operation(t_list **src, t_list **dest)
 {
 	t_list	*tmp;
 
-	if (!src || !(*src))
-		return ;
 	tmp = *src;
 	if ((*src)->next == *src && (*src)->prev == *src)
 		*src = NULL;
