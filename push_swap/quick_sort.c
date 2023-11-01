@@ -6,68 +6,74 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:58:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/20 15:41:37 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:18:37 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		partition(int arr[], int lo, int hi);
-void	quick_sort(int *arr, int lo, int hi);
+int		quick_sort_partition(int arr[], int low, int high);
+void	quick_sort(int *arr, int low, int high);
 
-void	quick_sort(int *arr, int lo, int hi)
+void	quick_sort(int *arr, int low, int high)
 {
-	if (lo >= hi)
-		return;
+	int	pivot_idx;
 
-	int pivot_idx = partition(arr, lo, hi);
-
-	quick_sort(arr, lo, pivot_idx - 1);
-	quick_sort(arr, pivot_idx + 1, hi);
+	if (low >= high)
+		return ;
+	pivot_idx = quick_sort_partition(arr, low, high);
+	quick_sort(arr, low, pivot_idx - 1);
+	quick_sort(arr, pivot_idx + 1, high);
 }
 
-int find_median(int arr[], int a, int b, int c)
+int	find_median(int arr[], int a, int b, int c)
 {
-	int x = arr[a];
-	int y = arr[b];
-	int z = arr[c];
+	int	x;
+	int	y;
+	int	z;
 
-	if ((x - y) * (z - x) >= 0) {
-		return a;
-	}
-	else if ((y - x) * (z - y) >= 0) {
-		return b;
-	}
-	else {
-		return c;
-	}
+	x = arr[a];
+	y = arr[b];
+	z = arr[c];
+	if ((x - y) * (z - x) >= 0)
+		return (a);
+	else if ((y - x) * (z - y) >= 0)
+		return (b);
+	else
+		return (c);
 }
 
-int partition(int arr[], int lo, int hi)
-{ //median of three partition technique
-	int pivot_index = find_median(arr, lo, (lo + hi) / 2, hi);
-	int pivot = arr[pivot_index];
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
 
-	int tmp = arr[hi];
-	arr[hi] = arr[pivot_index];
-	arr[pivot_index] = tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
-	int idx = lo - 1;
-	int i = lo;
-	while (i < hi)
+int	quick_sort_partition(int arr[], int low, int high)
+{
+	int	pivot_index;
+	int	pivot;
+	int	idx;
+	int	i;
+
+	pivot_index = find_median(arr, low, (low + high) / 2, high);
+	pivot = arr[pivot_index];
+	ft_swap (&arr[high], &arr[pivot_index]);
+	idx = low - 1;
+	i = low;
+	while (i < high)
 	{
 		if (arr[i] <= pivot)
 		{
 			idx++;
-			tmp = arr[i];
-			arr[i] = arr[idx];
-			arr[idx] = tmp;
+			ft_swap (&arr[i], &arr[idx]);
 		}
 		i++;
 	}
-
-	tmp = arr[hi];
-	arr[hi] = arr[idx + 1];
-	arr[idx + 1] = tmp;
-	return idx + 1;
+	ft_swap (&arr[high], &arr[idx + 1]);
+	return (idx + 1);
 }
+

@@ -6,9 +6,20 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:14:17 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/30 18:48:04 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:56:00 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+ * Checks if it is in order and, according to the size of the stack A,
+ * initializes the sort small_stack for <= 5 or big_stack for > 5.
+ * In the small_stack, it sorts according to the size of the stack.
+ * Same for the big_stack:
+ * 	If the size is <= 10 it runs the simple sort;
+ * 	If the size is <= 100 it pushes everything to stack B until there's only
+ * 3 elements, sorts them, and runs the complex_sort_1;
+ * 	If the size is > 100 it runs the complex_sort;
+ */
 
 #include "push_swap.h"
 
@@ -35,7 +46,7 @@ void	big_stack(int size, t_list **head_a, t_list **head_b)
 		while (stack_size(*head_a) != 3)
 			push(PB, head_a, head_b);
 		small_stack(3, head_a, head_b);
-		complex_sort_2(head_a, head_b);
+		complex_sort_1(head_a, head_b);
 	}
 	else if (size > 100)
 		complex_sort(size, head_a, head_b);

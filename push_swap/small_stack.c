@@ -6,9 +6,20 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:54:06 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/30 18:14:45 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:32:16 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+ * Organizes the stack for <= 5 numbers:
+ *
+ * 	The two_element_sort only swaps;
+ * 	The three_element_sort sorts the 3 elements according to their position
+ * in the stack.
+ * 	The four_five_element_sort finds the smallest and Push to stack B until
+ * there's only 3 elements inside the stack. This ensures that when pushed
+ * back to A, they are in order.
+ */
 
 #include "push_swap.h"
 
@@ -20,7 +31,7 @@ void	two_element_sort(t_list **head_a, t_list **head_b)
 
 void	three_element_sort(t_list **head_a, t_list **head_b)
 {
-	while (is_not_organized(*head_a))
+	while (!is_in_order(*head_a))
 	{
 		if ((*head_a)->data > (*head_a)->next->data)
 		{
@@ -29,13 +40,12 @@ void	three_element_sort(t_list **head_a, t_list **head_b)
 				if ((*head_a)->data < (*head_a)->prev->data)
 					swap(SA, head_a, head_b);
 				else
-					reverse_rotate(RRA, head_a, head_b);
-				continue ;
+					rotate(RA, head_a, head_b);
 			}
 			else
-				swap(SA, head_a, head_b);
+				rotate(RA, head_a, head_b);
 		}
-		if ((*head_a)->data < (*head_a)->next->data)
+		else
 			reverse_rotate(RRA, head_a, head_b);
 	}
 }

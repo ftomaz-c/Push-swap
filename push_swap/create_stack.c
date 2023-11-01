@@ -6,9 +6,14 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:12:57 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/30 18:01:01 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:15:45 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+ * Used to create a stack.
+ * If it was created successfully it returns 1.
+ */
 
 #include "push_swap.h"
 

@@ -6,9 +6,14 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:46:36 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/10/30 16:54:23 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:10:31 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+ * This file is responsible for verifying the arguments passed by the user.
+ * In case of an invalid input it displays "Error".
+ */
 
 #include "push_swap.h"
 

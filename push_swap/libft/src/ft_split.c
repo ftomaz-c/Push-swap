@@ -6,7 +6,7 @@
 /*   By: ftomaz-c <ftomaz-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:03:23 by ftomaz-c          #+#    #+#             */
-/*   Updated: 2023/09/28 14:14:56 by ftomaz-c         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:15:00 by ftomaz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	word_lenght(int i, char *str, char *charset)
 	return (word_len);
 }
 
-char **ft_split(char *str, char *charset)
+char	**ft_split(char *str, char *charset)
 {
 	int		i;
 	int		j;
@@ -75,7 +75,7 @@ char **ft_split(char *str, char *charset)
 
 	split = malloc(sizeof(char *) * (count_words(str, charset) + 1));
 	if (!split)
-		return NULL;
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (str[i])
